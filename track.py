@@ -56,6 +56,14 @@ else:
 ###
 cursor = conn.cursor()
 
+'''if sys.argv[1] == '--docker':
+    try:
+        cursor.execute('CREATE SCHEMA main;')
+        cursor.execute('CREATE TABLE main.info (id SERIAl NOT NULL, number TEXT, fight_fall TEXT, time_ent TEXT, time_out TEXT, average_accuracy TEXT);')
+        conn.commit()
+    except psycopg2.DatabaseError:
+        print(cursor.fetchall())'''
+        
 all_id = []
 info = dict()
 ###
@@ -250,7 +258,6 @@ def detect(opt):
 
                     vid_writer = cv2.VideoWriter('for_server/out.webm', cv2.VideoWriter_fourcc(*'VP90'), fps, (w, h))
                 vid_writer.write(im0)
-                print('writer: '+str(vid_writer.isOpened()))
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
 
