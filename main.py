@@ -29,11 +29,9 @@ os.chdir('for_server')
 directory = os.listdir()
 try:
     os.system('rm out.webm')
+    os.system('rm start.txt')
 except Exception:
     pass
-for i in directory:
-    if i != 'index.html':
-        os.system(f'rm {i}')
 
 os.chdir(os.pardir)
 
