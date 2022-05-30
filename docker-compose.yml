@@ -1,0 +1,21 @@
+version: "3"
+
+volumes:
+  pg_project:
+
+services:
+  app_db:
+    build: .
+    ports:
+      - 9000:9000
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=yolo_db
+    volumes:
+      - pg_project:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT:-5666}:5432
